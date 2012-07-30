@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>${SeitenTitel}</title>
+</head>
+<body>
+<h3>${SeitenTitel}</h3>
+Datum:  ${Datum}<br>
+Uhrzeit: ${Uhrzeit}
+
+<table border="1" cellpadding="3" cellspacing="0">
+  <tr>
+    <td bgcolor="#EEEEEE">Zeile / Spalte</td>
+  </tr>
+
+  <!-- $BeginBlock tr -->
+  <tr>
+	<td>Zeile: ${Zeile}</td>
+    <!-- $BeginBlock td -->
+	  <td>
+			Z:${Zeile} / S:${Spalte}
+	  </td>
+    <!-- $EndBlock td -->
+  </tr>
+  <!-- $EndBlock tr -->
+
+</table>
+
+</body>
+</html>

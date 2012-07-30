@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>${SeitenTitel}</title>
+</head>
+<body>
+<center>
+
+<h3>${SeitenTitel}</h3>
+Aktuelles Datum:  ${Datum} / Uhrzeit: ${Uhrzeit} <br>
+<br>
+<table border="1" cellpadding="3" cellspacing="0">
+  <tr>
+	<td bgcolor="#EEEEEE"><b>Ersteller</b></td>
+    <td bgcolor="#EEEEEE"><b>${SeitenTitel}-Einträge</b></td>
+  </tr>
+  <!-- $BeginBlock tr -->
+  <tr>
+    <!-- $BeginBlock td -->
+		<td bgcolor="#EEEEEE"># ${ID} von ${Name} <br> <a href="${Email}">E-Mail</a></td>
+		<td>${Inhalt}</td>
+    <!-- $EndBlock td -->
+  </tr>
+  <!-- $EndBlock tr -->
+</table>
+
+<br>
+<b>Neuer Eintrag</b>
+<br>
+<br>
+<form action="gb.php" method="post">
+	Name: 	<input type="text" name="name"><br>
+	E-Mail: <input type="text" name="email"><br>
+	Text: 	<textarea name="text"></textarea><br>
+			<input type="hidden" name="action" value="save"><br>
+			<input type="submit" value="Eintragen!">
+</form>
+
+</center>
+</body>
+</html>
