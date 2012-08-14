@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() 
+{
+	function connect()
+	{
+		// Websocket
+		var socket = new WebSocket("ws://192.168.50.63:8000");
+		
+		// Nach dem öffnen des Sockets den Status anzeigen
+		socket.onopen 		= function() 	{ message('Socket Status: '+socket.readyState+' (open)');	}
+		// Nach dem empfangen einer Nachricht soll diese angezeigt werden
+		socket.onmessage 	= function(msg)	{ message('Empfangen: '+msg.data);							}			
+	
+		// SENDEN
+		function send()
+		{
+			var text = $('#text').val();				// Text aus textbox in Variable schreiben 
+			socket.send(text);							// Den Text aus der Variable an den Socket senden
+			message('Gesendet : '+text)					// Anzeigen was gesendet wurde
+			$('#text').val("");							// Text-Inhalt der Textbox löschen
+		}
+			
+		// Funktion welche die Nchrichten an das Log anfügt
+		function message(msg)
+		{
+			$('#Log').append(msg+'</br>');
+		}
+		
+		// Enter taste auf der TextBox zum senden behandeln
+		$('#text').keypress(function(event) 
+		{
+			if (event.keyCode == '13') 
+			{
+				send();
+			}
+		});	
+	}
+	
+	connect();
+		
+});
+</script>
+</head>
+<body>
+  	<div id="container">
+    	<h3>WebSocket Client 0.1</h3>
+		<div id="Log"></div>
+    	Eingabe: <input id="text" type="text" />
+	</div>
+</body>
+</html>
